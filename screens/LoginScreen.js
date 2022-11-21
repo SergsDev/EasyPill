@@ -62,11 +62,11 @@ const LoginScreen = () => {
             style={styles.logo}
             source={{uri: 'https://i.imgur.com/PFb2AAo.png'}}>
             </Image>
-            <Text style={styles.label}>Ingresa tu correo Electronico</Text>
+            <Text style={styles.label}>Correo Electronico</Text>
             <TextInput placeholder='nombre@correo.com' placeholderTextColor={'#a6a6a6'} style={styles.input}
             onChangeText={(text) => setEmail(text)}/>
 
-            <Text style={styles.label}>Ingresa tu contraseña</Text>
+            <Text style={styles.label}>Contraseña</Text>
             <TextInput placeholder='Contraseña' placeholderTextColor={'#a6a6a6'} style={styles.input} secureTextEntry
             onChangeText={(text) => setPassword(text)}/>
 
