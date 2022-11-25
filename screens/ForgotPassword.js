@@ -23,11 +23,7 @@ const ForgotPassword = () => {
         alert("El correo de reestablecimiento se ha enviado!");
         console.log("correo de restablecimiento enviado!");
       })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
-      });
+      .catch((error) => alert(error.message));
   };
 
   const goBack = () => {

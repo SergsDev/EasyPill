@@ -10,7 +10,11 @@ const firestore = getFirestore(app);
 const HomeScreen = () => {
   const [pills, setPills] = useState([]);
 
-  function sufrimiento() {
+
+  const navigation = useNavigation();
+
+  //se consulta la informacion a firestore
+  function queryFirestore() {
     getDocs(collection(firestore, "pills")).then((pillsQuery) => {
       pillsQuery.forEach((pill) => {
         setPills((lastPills) => [
@@ -22,13 +26,18 @@ const HomeScreen = () => {
   }
 
   useEffect(() => {
-    sufrimiento();
+    queryFirestore();
   }, []);
+
+  const goCart = () =>{
+    navigation.navigate('CartScreen')
+  }
 
   return (
       <ScrollView showsHorizontalScrollIndicator={false}>
         <View style={styles.container}>
         <Ionicons
+            onPress={goCart}
             name="cart-outline"
             size={40}
             color="#161f30"
@@ -116,7 +125,7 @@ const styles = StyleSheet.create({
   cartIcon:{
     position: "absolute",
     right: 30,
-    top: 70
+    top: 60
   },
 
   cardContainer: {

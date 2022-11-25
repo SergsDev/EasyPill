@@ -1,15 +1,27 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
-
+import { useNavigation } from "@react-navigation/native";
+import { TouchableWithoutFeedback } from "react-native";
+import { cartContext } from "../App";
 const Card = ({ pill }) => {
-  return (
 
-    <View style={styles.cardContainer}>
-      <Image source={{ uri: pill.image }} style={styles.cardImg} />
-      <Text style={styles.cardText}>{pill.name}</Text>
-      <Text style={styles.cardPrice}>{pill.price}</Text>
-    </View>
-      
+  const {currencyFormat}= React.useContext(cartContext)
+
+  const navigation = useNavigation();
+
+  const goDetails =() => {
+    navigation.navigate('DetailsScreen', {pill})
+  }
+  return (
+    <TouchableWithoutFeedback onPress={goDetails}>
+
+      <View style={styles.cardContainer}>
+        <Image source={{ uri: pill.image }} style={styles.cardImg} />
+        <Text style={styles.cardText}>{pill.name}</Text>
+        <Text style={styles.cardPrice}>{currencyFormat(pill.price)}</Text>
+      </View>
+        
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -46,6 +58,12 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontWeight: 'bold',
 
-  }
+  },
+  buttonContainer:{
+    width: '60%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 15,
+  },
 
 });

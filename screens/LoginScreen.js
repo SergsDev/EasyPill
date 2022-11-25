@@ -20,26 +20,19 @@ const LoginScreen = () => {
     const handleCreateAccount = () => {
         createUserWithEmailAndPassword(auth, email, password)
         .then ((userCredential) => {
-            console.log('Cuenta creada');
             const user = userCredential.user;
-            console.log(user);
         })
-        .catch(error => {
-            console.log(error);
-        })
+        .catch(error => alert(error.message))
     }
     //metodo para iniciar sesion
     const handleSignIn = () => {
         signInWithEmailAndPassword(auth,email, password)
         .then((userCredential) => {
-            console.log('Sesion Iniciada');
             const user = userCredential.user;
-            console.log(user);
             navigation.navigate('HomeScreen')
         })
-        .catch(error => {
-            console.log(error);
-        })
+        .catch(error => alert(error.message)
+        )
     }
 
     useEffect(() => {
